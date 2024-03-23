@@ -4238,16 +4238,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gif"
-version = "0.12.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "80792593675e051cf94a4b111980da2ba60d4a83e43e0048c5693baab3977045"
-dependencies = [
- "color_quant",
- "weezl",
-]
-
-[[package]]
 name = "gimli"
 version = "0.28.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4876,13 +4866,15 @@ dependencies = [
  "bytemuck",
  "byteorder",
  "color_quant",
- "gif 0.11.4",
- "jpeg-decoder 0.1.22",
- "num-iter",
- "num-rational 0.3.2",
+ "exr",
+ "gif 0.13.1",
+ "image-webp",
  "num-traits",
- "png 0.16.8",
- "scoped_threadpool",
+ "png",
+ "qoi",
+ "ravif",
+ "rayon",
+ "rgb",
  "tiff",
  "zune-core",
  "zune-jpeg",
@@ -4916,6 +4908,12 @@ name = "imagesize"
 version = "0.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "029d73f573d8e8d63e6d5020011d3255b28c3ba85d6cf870a07184ed23de9284"
+
+[[package]]
+name = "imgref"
+version = "1.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "44feda355f4159a7c757171a77de25daf6411e217b4cabd03bd6650690468126"
 
 [[package]]
 name = "indexmap"
@@ -5214,12 +5212,6 @@ dependencies = [
  "shellexpand",
  "workspace",
 ]
-
-[[package]]
-name = "jpeg-decoder"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5d4a7da358eff58addd2877a45865158f0d78c911d43a5784ceb7bbf52833b0"
 
 [[package]]
 name = "jpeg-decoder"
@@ -7005,19 +6997,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "png"
-version = "0.17.13"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "06e4b0d3d1312775e782c86c91a111aa1f910cbb65e1337f9975b5f9a554b5e1"
-dependencies = [
- "bitflags 1.3.2",
- "crc32fast",
- "fdeflate",
- "flate2",
- "miniz_oxide 0.7.1",
-]
-
-[[package]]
 name = "polling"
 version = "2.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -7843,10 +7822,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "024e40e1ba7313fc315b1720298988c0cd6f8bfe3754b52838aafecebd11355a"
 dependencies = [
  "gif 0.12.0",
- "jpeg-decoder 0.3.1",
+ "jpeg-decoder",
  "log",
  "pico-args",
- "png 0.17.13",
+ "png",
  "rgb",
  "svgtypes",
  "tiny-skia",
@@ -8787,6 +8766,15 @@ name = "simd-adler32"
 version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
+
+[[package]]
+name = "simd_helpers"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "95890f873bec569a0362c235787f3aca6e1e887302ba4840839bcc6459c42da6"
+dependencies = [
+ "quote",
+]
 
 [[package]]
 name = "simdutf8"
@@ -9892,8 +9880,8 @@ version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ba1310fcea54c6a9a4fd1aad794ecc02c31682f6bfbecdf460bf19533eed1e3e"
 dependencies = [
- "jpeg-decoder 0.1.22",
- "miniz_oxide 0.4.4",
+ "flate2",
+ "jpeg-decoder",
  "weezl",
 ]
 
@@ -9961,7 +9949,7 @@ dependencies = [
  "bytemuck",
  "cfg-if",
  "log",
- "png 0.17.13",
+ "png",
  "tiny-skia-path",
 ]
 
@@ -12827,6 +12815,30 @@ dependencies = [
 [[package]]
 name = "zune-core"
 version = "0.4.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f423a2c17029964870cfaabb1f13dfab7d092a62a29a89264f4d36990ca414a"
+
+[[package]]
+name = "zune-inflate"
+version = "0.2.54"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73ab332fe2f6680068f3582b16a24f90ad7096d5d39b974d1c0aff0125116f02"
+dependencies = [
+ "simd-adler32",
+]
+
+[[package]]
+name = "zune-jpeg"
+version = "0.4.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ec866b44a2a1fd6133d363f073ca1b179f438f99e7e5bfb1e33f7181facfe448"
+dependencies = [
+ "zune-core",
+]
+
+[[package]]
+name = "zvariant"
+version = "3.15.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f423a2c17029964870cfaabb1f13dfab7d092a62a29a89264f4d36990ca414a"
 
